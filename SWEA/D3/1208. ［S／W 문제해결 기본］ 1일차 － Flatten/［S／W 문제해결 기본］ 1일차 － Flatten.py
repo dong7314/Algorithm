@@ -1,14 +1,21 @@
 T = 10
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
-    # ///////////////////////////////////////////////////////////////////////////////////
-    n = int(input())
-    height = list(map(int, input().split()))
+for tc in range(1, T + 1):
+    N = int(input())
+    arr = list(map(int, input().split()))
 
-    for _ in range(n):
-        max_height = max(height)
-        min_height = min(height)
-        height[height.index(max_height)] = max_height - 1
-        height[height.index(min_height)] = min_height + 1
-    print(f'#{test_case} {max(height) - min(height)}')
-    # ///////////////////////////////////////////////////////////////////////////////////
+    max_h = min_h = 0
+
+    while N >= 0:
+        for i in range(100):
+            if arr[i] > arr[max_h]:
+                max_h = i
+            elif arr[i] < arr[min_h]:
+                min_h = i
+        if N == 0:
+            break
+        arr[max_h] -= 1
+        arr[min_h] += 1
+
+        N -= 1
+
+    print(f'#{tc} {arr[max_h] - arr[min_h]}')
