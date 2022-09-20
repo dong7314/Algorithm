@@ -1,7 +1,6 @@
 from collections import deque
 def bfs(x, y):
     max_value = 0
-    visited = [[0] * N for _ in range(N)]
     deq = deque()
     deq.append((x, y))
     visited[x][y] = 1
@@ -23,6 +22,7 @@ T = int(input())
 for tc in range(1, T + 1):
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
+    visited = [[0] * N for _ in range(N)]
     ans = 987654321
     cnt = 0
     for x in range(N):
